@@ -4,13 +4,20 @@ services:
   chirpstack:
     image: chirpstack/chirpstack:4
     ports:
-      - "8080:8080"  # Puerto web
+      - "8080:8080"  # Interfaz web
     environment:
       - DSN=${POSTGRES_DSN}
+      - REDIS_URL=redis://redis:6379
+      - MQTT_BROKER=ssl://mosquitto:8883
     depends_on:
       - redis
+      - mosquitto
     restart: always
 
   redis:
     image: redis:7
     restart: always
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: always                                                 
