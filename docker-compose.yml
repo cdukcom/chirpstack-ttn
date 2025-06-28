@@ -4,7 +4,7 @@ services:
   chirpstack:
     image: chirpstack/chirpstack:4
     ports:
-      - "8080:8080"  # Interfaz web
+      - "80:8080"  # Expone puerto 8080 del contenedor en el puerto 80 externo
     environment:
       - DSN=${POSTGRES_DSN}
       - REDIS_URL=redis://redis:6379
