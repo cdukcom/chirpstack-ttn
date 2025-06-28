@@ -1,0 +1,11 @@
+[postgresql]
+dsn="postgresql://postgres:adqAakOzYthUrREsUiyNisycxPMeebDJ@postgres.railway.internal:5432/railway"
+automigrate=true
+max_open_connections=10
+max_idle_connections=5
+
+[redis]
+url="redis://redis:6379"
+
+[mqtt]
+server="ssl://mosquitto:8883"

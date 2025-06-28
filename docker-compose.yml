@@ -4,11 +4,10 @@ services:
   chirpstack:
     image: chirpstack/chirpstack:4
     ports:
-      - "80:8080"  # Expone puerto 8080 del contenedor en el puerto 80 externo
-    environment:
-      - DSN=${POSTGRES_DSN}
-      - REDIS_URL=redis://redis:6379
-      - MQTT_BROKER=ssl://mosquitto:8883
+      - "80:8080"
+    volumes:
+      - ./config:/etc/chirpstack
+    command: ["chirpstack", "--config", "/etc/chirpstack"]
     depends_on:
       - redis
       - mosquitto
@@ -20,4 +19,4 @@ services:
 
   mosquitto:
     image: eclipse-mosquitto:2
-    restart: always                                                 
+    restart: always
